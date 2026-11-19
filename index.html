@@ -785,7 +785,7 @@ dialog .go{background:var(--blue);color:#fff;border:0;padding:9px 14px;cursor:po
       <p class="note" id="note"></p>
       <div class="forms" id="forms"></div>
     </section>
-    <div class="region" id="region"><h3><span id="rName"></span><button class="linkish" id="rClose">닫기</button></h3><ul id="rList"></ul></div>
+    
     <details class="index" id="index"><summary>담긴 단어 전체 보기</summary><div id="ini"></div></details>
   </aside>
   <main>
@@ -3301,7 +3301,7 @@ function legend() {
   const fams = cur._fams.slice(0, 8);
   $('#legend').innerHTML = fams.map((fm, i) => `<span class="fam">${fm.slice(0, 5).map(f => `<i style="background:${colors[f]}"></i>`).join('')}${i === 0 ? cur.std + ' 계열 (표준어)' : fm[0] + ' 계열'}</span>`).join('') + `<span><i class="dash"></i>점선: 추정·일부 시군</span>`;
 }
-function showRegion(prov, muni) {
+function showRegion(prov, muni) { return;
   const box = $('#region'); box.classList.add('on');
   $('#rName').textContent = muni ? `${NAMES[prov]} ${muni}에서 쓰는 말` : `${NAMES[prov]}에서 쓰는 말`;
   const rows = [];
@@ -3311,7 +3311,7 @@ function showRegion(prov, muni) {
   $('#rList').querySelectorAll('button').forEach(b => b.onclick = () => { const w = W[b.dataset.std]; $('#q').value = b.dataset.f; show(w, b.dataset.f === w.std ? null : b.dataset.f); $('aside').scrollTo({ top: 0, behavior: 'smooth' }); });
   box.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-$('#rClose').onclick = () => $('#region').classList.remove('on');
+
 
 // ---------- 찾기 ----------
 function index() {
@@ -3340,8 +3340,8 @@ q.addEventListener('keydown', e => {
 });
 q.addEventListener('blur', () => setTimeout(() => sugg.classList.remove('on'), 120));
 function mark() { sugg.querySelectorAll('li').forEach((li, i) => li.classList.toggle('act', i === act)); }
-function pick(e) { sugg.classList.remove('on'); q.value = e.key; show(e.w, e.kind === 'form' ? e.key : null); $('#region').classList.remove('on'); $('aside').scrollTo({ top: 0 }); }
-$('#rand').onclick = () => { const ws = list().filter(w => realN(w) >= 6); const w = ws[Math.floor(Math.random() * ws.length)]; const fs = Object.entries(w.prov).filter(([k]) => k !== '서울').flatMap(([, v]) => v.forms).filter(f => f !== w.std); const f = fs.length && Math.random() < .6 ? fs[Math.floor(Math.random() * fs.length)] : null; q.value = f || w.std; show(w, f); $('#region').classList.remove('on'); };
+function pick(e) { sugg.classList.remove('on'); q.value = e.key; show(e.w, e.kind === 'form' ? e.key : null);  $('aside').scrollTo({ top: 0 }); }
+$('#rand').onclick = () => { const ws = list().filter(w => realN(w) >= 6); const w = ws[Math.floor(Math.random() * ws.length)]; const fs = Object.entries(w.prov).filter(([k]) => k !== '서울').flatMap(([, v]) => v.forms).filter(f => f !== w.std); const f = fs.length && Math.random() < .6 ? fs[Math.floor(Math.random() * fs.length)] : null; q.value = f || w.std; show(w, f);  };
 
 const CHO = 'ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ';
 const cho = s => { const c = s.charCodeAt(0) - 0xAC00; return c >= 0 && c <= 11171 ? CHO[Math.floor(c / 588)].replace('ㄲ', 'ㄱ').replace('ㄸ', 'ㄷ').replace('ㅃ', 'ㅂ').replace('ㅆ', 'ㅅ').replace('ㅉ', 'ㅈ') : '#'; };
