@@ -3217,6 +3217,9 @@ function labels() {
   }
 }
 map.on('zoomend moveend', () => paint());
+const clearHit = () => { if (cur && hit) show(cur, null); };
+map.on('click', clearHit);
+document.addEventListener('click', e => { if (e.target.closest('#map, .form, button, input, a, label, #sugg')) return; clearHit(); });
 
 
 // ---------- 비슷한 말끼리 묶기 (자모 편집 거리) ----------
@@ -3289,7 +3292,7 @@ function show(w, form) {
     const b = document.createElement('button'); b.className = 'form' + (f === hit ? ' hit' : '');
     b.innerHTML = `<span class="sw" style="background:${color}"></span><span class="w">${f}${f === w.std ? '<em>표준어</em>' : ''}</span><span class="r">${label}</span>`;
     b.onmouseenter = () => { hoverForm = f; labels(); }; b.onmouseleave = () => { hoverForm = null; labels(); };
-    b.onclick = () => show(w, f === w.std ? null : f); forms.appendChild(b);
+    b.onclick = e => { e.stopPropagation(); show(w, f === w.std || f === hit ? null : f); }; forms.appendChild(b);
   };
   row(w.std, regionLabel(w, w.std) || '서울', STD_COLOR);
   let lastFam = 0; for (const f of order) { row(f, regionLabel(w, f), colors[f]); if (w._famOf[f] !== lastFam) { forms.lastChild.classList.add('fstart'); lastFam = w._famOf[f]; } }
