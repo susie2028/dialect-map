@@ -672,12 +672,19 @@ svg.leaflet-image-layer.leaflet-interactive path {
   --sans:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR","Nanum Gothic",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
+/* 스크롤바: 얇은 검은 막대, 트랙 없음 */
+@supports (-moz-appearance:none){*{scrollbar-width:thin;scrollbar-color:#000 transparent}}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#000;border-radius:0}
+::-webkit-scrollbar-thumb:hover{background:var(--blue)}
+::-webkit-scrollbar-corner{background:transparent}
 html,body{height:100%;margin:0;overflow:hidden}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5}
 a{color:inherit}
 button{font-family:var(--sans)}
 button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
-.app{height:100vh;display:grid;grid-template-columns:210px minmax(320px,380px) 1fr;grid-template-rows:auto minmax(0,1fr)}
+.app{height:100vh;display:grid;grid-template-columns:210px minmax(360px,420px) 1fr;grid-template-rows:auto minmax(0,1fr)}
 header{grid-column:1/-1;display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:2px solid var(--ink);background:var(--bg)}
 header h1{font-weight:900;font-size:21px;margin:0;white-space:nowrap;letter-spacing:-.04em}
 .search{position:relative;flex:1;max-width:520px}
@@ -692,15 +699,18 @@ header h1{font-weight:900;font-size:21px;margin:0;white-space:nowrap;letter-spac
 .hbtn{font:700 14px var(--sans);background:#fff;border:2px solid var(--ink);border-radius:0;padding:7px 12px;cursor:pointer;color:var(--ink);white-space:nowrap}
 .hbtn:hover{background:#fff200}
 .count{margin-left:auto;font-size:13px;font-weight:600;white-space:nowrap}
-aside{overflow:auto;padding:16px 18px 24px;border-right:2px solid var(--ink)}
-.head{font-weight:900;font-size:clamp(46px,5.4vw,78px);line-height:1;margin:0 0 10px;letter-spacing:-.05em;word-break:keep-all}
-.lede{font-size:15.5px;line-height:1.6;margin:0 0 4px}
+aside{overflow:auto;padding:30px 30px 48px;border-right:2px solid var(--ink)}
+.head{font-weight:900;font-size:clamp(46px,5.4vw,78px);line-height:1;margin:0;letter-spacing:-.05em;word-break:keep-all}
+.headrow{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin:0 0 18px}
+.ncount{font-size:14px;font-weight:700;white-space:nowrap;padding-bottom:6px}
+.ncount b{font-size:22px;font-weight:900;margin-left:4px}
+.lede{font-size:15.5px;line-height:1.65;margin:0}
 .lede b{font-weight:800}
-.also{font-size:13.5px;margin:4px 0 0}
+.also{font-size:13.5px;margin:10px 0 0}
 .also button,.linkish{font:inherit;color:var(--blue);background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-weight:700}
-.note{font-size:13.5px;margin:6px 0 0}
-.forms{border-top:2px solid var(--ink);margin-top:14px}
-.form{display:grid;grid-template-columns:16px minmax(76px,auto) 1fr;gap:10px;align-items:center;padding:7px 2px;border:0;border-bottom:1px solid var(--ink);cursor:pointer;background:none;width:100%;text-align:left;font:inherit;color:inherit}
+.note{font-size:13.5px;line-height:1.6;margin:10px 0 0}
+.forms{border-top:2px solid var(--ink);margin-top:30px;padding-top:8px}
+.form{display:grid;grid-template-columns:16px minmax(76px,auto) 1fr;gap:14px;align-items:center;padding:9px 4px;border:0;cursor:pointer;background:none;width:100%;text-align:left;font:inherit;color:inherit}
 .form:hover{background:#fff200}
 .form .sw{width:16px;height:16px;border-radius:50%}
 .form .w{font-weight:800;font-size:18px;letter-spacing:-.02em}
@@ -708,7 +718,7 @@ aside{overflow:auto;padding:16px 18px 24px;border-right:2px solid var(--ink)}
 .form .r{font-size:12.5px;line-height:1.4}
 .form.hit .w{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:4px}
 .thin{display:block;margin-top:6px;font-size:13px}
-.cite{margin:22px 0 0;padding:10px 0 0;border-top:2px solid var(--ink);font-size:12px;line-height:1.55}
+.cite{margin:44px 0 0;padding:14px 0 0;border-top:2px solid var(--ink);font-size:12px;line-height:1.55}
 .cite h3{font:900 13px var(--sans);margin:0 0 4px}
 .cite ol{margin:0;padding-left:18px}
 .cite a{text-underline-offset:2px}
@@ -720,6 +730,8 @@ nav.idx{border-right:2px solid var(--ink);overflow:auto;padding:0 0 24px}
 .jump{display:flex;flex-wrap:wrap;gap:2px}
 .jump button{font:800 15px var(--sans);width:23px;height:26px;padding:0;border:0;background:none;cursor:pointer;color:var(--ink)}
 .jump button:hover{background:#fff200}
+.jump button.on{background:#000;color:#fff}
+.idx.filtered h4{display:none}
 .idx h4{font:900 22px var(--sans);margin:0;padding:12px 12px 2px;letter-spacing:-.03em}
 .idx ul{list-style:none;margin:0;padding:0 6px}
 .idx li button{display:block;width:100%;text-align:left;font:600 14.5px var(--sans);padding:3px 6px;border:0;background:none;cursor:pointer;color:var(--ink);letter-spacing:-.02em}
@@ -771,7 +783,7 @@ main{position:relative;min-height:0}
   <nav class="idx" id="idx" aria-label="담긴 단어 전체"></nav>
   <aside>
     <section aria-live="polite">
-      <h2 class="head" id="head"></h2>
+      <div class="headrow"><h2 class="head" id="head"></h2></div>
       <p class="lede" id="lede"></p>
       <p class="also" id="also"></p>
       <p class="note" id="note"></p>
@@ -783,7 +795,6 @@ main{position:relative;min-height:0}
   <main>
     <div id="map" aria-label="방언 지도. 확대하면 시군구별로 보여요."></div>
     <div class="legend" id="legend"></div>
-    <div class="zoomhint" id="zoomhint">확대하면 시군구별로 보여요</div>
   </main>
 </div>
 
@@ -3030,14 +3041,11 @@ const NOTES = {
   등겨: '벼를 찧을 때 나오는 껍질 가루예요. 이름이 지역마다 정말 다양해요.',
   다슬기: '충청도의 ‘올갱이국’, 경상도의 ‘고디탕’은 같은 다슬기로 만든 음식이에요.',
   식혜: '안동에서는 우리가 아는 식혜를 ‘감주’라고 하고, ‘식혜’는 고춧가루를 넣은 빨간 음료를 말해요.',
-  부추: '같은 도 안에서도 시군마다 달라요. 지도를 확대해 보세요.',
   가위: '1980년대 조사 기준으로, 서울을 뺀 거의 모든 지역이 ‘가새’였다고 해요.',
   고구마: '전라와 제주에서는 오랫동안 고구마를 ‘감자·감저’라고 불렀어요.',
-  새우: '국립국어원 남한 방언 검색 자료의 일부예요. 광역시는 둘러싼 도의 자료로 표시했어요.',
   옥수수: '‘강냉이’는 워낙 넓게 쓰여서 표준어로도 인정됐어요.',
   거울: '‘색경’은 돌 거울(石鏡)을 뜻하는 ‘석경’이 변한 말이에요.',
-  소꿉놀이: '경북 안에서만 이름이 열 가지가 넘어요.',
-  고양이: '충남 서북부 시군에서 ‘괭이’라고 해요. 확대하면 보여요.',
+  소꿉질: '경북 안에서만 이름이 열 가지가 넘어요.',
 };
 </script>
 <script>
@@ -3076,6 +3084,9 @@ for (const line of RAW.trim().split('\n')) {
   for (const r of regs.split(',')) addEntry(std, forms.split(','), r, src.split(','), subs ? subs.split(',') : null);
 }
 for (const k in W) { if (!W[k].prov['서울']) W[k].prov['서울'] = { forms: [k], partial: false, implied: true }; W[k].note = NOTES[k] || ''; }
+// 담긴 이름(표준어 포함)이 3가지 이하인 단어는 뺀다
+for (const k in W) { const n = new Set([k, ...Object.values(W[k].prov).flatMap(p => p.forms), ...Object.values(W[k].sub).flat()]).size; if (n <= 3) delete W[k]; }
+for (const a in ALIAS) if (!W[ALIAS[a]]) delete ALIAS[a];
 const list = () => Object.values(W);
 
 // ---------- 지도 ----------
@@ -3128,7 +3139,6 @@ function paint(keepLabels) {
   nkLayer.eachLayer(l => l.setStyle(styleFor(l.feature.properties.id, null)));
   muniLayer.eachLayer(l => l.setStyle(styleFor(l.feature.properties.prov, l.feature.properties.name)));
   if (!keepLabels) labels();
-  $('#zoomhint').style.opacity = detail ? 0 : 1;
 }
 function bubbleHtml(r, form, size, fs, kind) {
   const c = colorOf(form); const isStd = form === cur.std;
@@ -3249,12 +3259,15 @@ function show(w, form) {
   const fams = families(w.std, [...shown, ...order.filter(f => !shown.includes(f))]);
   const famCover = fm => fm.reduce((s, f) => s + cover(f), 0);
   const rest = fams.slice(1).sort((a, b) => famCover(b) - famCover(a)); w._fams = [fams[0], ...rest];
+  // 말이 7가지 이하면 묶지 않고 하나씩 다른 색, 넘으면 비슷한 말끼리 묶어 한 색
+  const all = [w.std, ...order.slice().sort((a, b) => cover(b) - cover(a))];
+  if (all.length <= FAM_COLORS.length) w._fams = all.map(f => [f]);
   colors = {}; w._famOf = {};
   w._fams.forEach((fm, fi) => fm.forEach(f => { colors[f] = fi < FAM_COLORS.length ? FAM_COLORS[fi] : OTHER; w._famOf[f] = fi; }));
   order.length = 0; for (const fm of w._fams) for (const f of fm) if (f !== w.std) order.push(f);
   $('#head').textContent = hit || w.std;
   if (hit) $('#lede').innerHTML = `‘<b>${hit}</b>’${jong(hit) ? '은' : '는'} 표준어 ‘<b>${w.std}</b>’의 방언이에요. <b>${regionLabel(w, hit)}</b>에서 써요.`;
-  else $('#lede').innerHTML = `표준어 ‘<b>${w.std}</b>’${jong(w.std) ? '을' : '를'} 지역마다 이렇게 불러요. 지금 담긴 이름은 <b>${order.length + 1}가지</b>예요.${realN(w) < 3 ? ' <span class="thin">이 단어는 아직 한두 지역 자료만 있어요.</span>' : ''}`;
+  else $('#lede').innerHTML = `표준어 ‘<b>${w.std}</b>’${jong(w.std) ? '을' : '를'} 지역마다 이렇게 불러요.`;
   const key = hit || w.std; const others = index().filter(e => norm(e.key) === norm(key) && e.w !== w);
   $('#also').innerHTML = others.length ? `‘${key}’${jong(key) ? '은' : '는'} ${others.map(o => `<button data-std="${o.w.std}" data-form="${o.kind === 'form' ? key : ''}">${o.kind === 'std' ? '표준어 ‘' + o.w.std + '’' : '‘' + o.w.std + '’의 방언'}</button>`).join(', ')}으로도 쓰여요.` : '';
   $('#also').querySelectorAll('button').forEach(b => b.onclick = () => show(W[b.dataset.std], b.dataset.form || null));
@@ -3322,10 +3335,20 @@ function renderIndex() {
   $('#idx').innerHTML = `<div class="top"><b>담긴 단어 ${list().length}개</b><div class="jump">${keys.map(c => `<button data-j="${c}" aria-label="${c} 항목으로">${c}</button>`).join('')}</div></div>` +
     keys.map(c => `<h4 id="ix-${c}">${c}</h4><ul>${g[c].map(w => `<li><button data-w="${w.std}">${w.std}</button></li>`).join('')}</ul>`).join('');
   $('#idx').querySelectorAll('[data-w]').forEach(b => b.onclick = e => { e.stopPropagation(); q.value = b.dataset.w; show(W[b.dataset.w], null); $('aside').scrollTo({ top: 0 }); });
-  $('#idx').querySelectorAll('[data-j]').forEach(b => b.onclick = e => { e.stopPropagation(); const h = $('#ix-' + b.dataset.j); const idx = $('#idx'); if (getComputedStyle(idx).overflowY === 'auto') idx.scrollTo({ top: h.offsetTop - $('#idx .top').offsetHeight, behavior: 'smooth' }); else h.scrollIntoView({ behavior: 'smooth' }); });
+  $('#idx').querySelectorAll('[data-j]').forEach(b => b.onclick = e => { e.stopPropagation(); setIni(jFilter === b.dataset.j ? null : b.dataset.j); });
   const nForms = index().filter(e => e.kind === 'form').length;
   $('#count').textContent = `표준어 ${list().length}개, 방언 ${nForms}개`;
 }
+let jFilter = null;
+// 초성을 누르면 그 초성 단어만, 같은 초성을 다시 누르거나 목록 밖을 누르면 전체
+function setIni(c) {
+  jFilter = c; const idx = $('#idx');
+  idx.classList.toggle('filtered', !!c);
+  idx.querySelectorAll('[data-j]').forEach(b => { b.classList.toggle('on', b.dataset.j === c); b.setAttribute('aria-pressed', b.dataset.j === c); });
+  idx.querySelectorAll('h4').forEach(h => { const on = !c || h.id === 'ix-' + c; h.hidden = !on; h.nextElementSibling.hidden = !on; });
+  idx.scrollTo({ top: 0 });
+}
+document.addEventListener('click', e => { if (jFilter && !e.target.closest('#idx')) setIni(null); });
 function markIdx(w) {
   const idx = $('#idx'); if (!idx) return;
   idx.querySelectorAll('button.on').forEach(b => b.classList.remove('on'));
