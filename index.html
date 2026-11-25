@@ -677,7 +677,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
 a{color:inherit}
 button{font-family:var(--sans)}
 button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
-.app{height:100vh;display:grid;grid-template-columns:minmax(340px,400px) 1fr;grid-template-rows:auto minmax(0,1fr)}
+.app{height:100vh;display:grid;grid-template-columns:210px minmax(320px,380px) 1fr;grid-template-rows:auto minmax(0,1fr)}
 header{grid-column:1/-1;display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:2px solid var(--ink);background:var(--bg)}
 header h1{font-weight:900;font-size:21px;margin:0;white-space:nowrap;letter-spacing:-.04em}
 .search{position:relative;flex:1;max-width:520px}
@@ -707,26 +707,24 @@ aside{overflow:auto;padding:16px 18px 24px;border-right:2px solid var(--ink)}
 .form .w em{font-style:normal;font-size:11px;font-weight:800;color:var(--blue);margin-left:6px;vertical-align:2px}
 .form .r{font-size:12.5px;line-height:1.4}
 .form.hit .w{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:4px}
-.src{font-size:12px;margin-top:12px;line-height:1.6}
-.region{margin-top:18px;border-top:2px solid var(--ink);padding-top:10px;display:none}
-.region.on{display:block}
-.region h3{font-weight:900;font-size:18px;margin:0 0 6px;display:flex;justify-content:space-between;align-items:baseline}
-.region h3 button{font:700 13px var(--sans)}
-.region ul{list-style:none;padding:0;margin:0;columns:2;column-gap:18px}
-.region li{padding:3px 0;break-inside:avoid}
-.region li button{font:inherit;background:none;border:0;padding:0;cursor:pointer;color:inherit;text-align:left}
-.region li button:hover b{background:#fff200}
-.region li b{font-weight:800;font-size:15px;margin-right:5px}
-.region li span{font-size:12.5px}
-details.index{margin-top:18px;border-top:2px solid var(--ink);padding-top:10px}
-details.index summary{cursor:pointer;font-weight:900;font-size:17px}
-.ini{display:flex;gap:5px;flex-wrap:wrap;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--ink)}
-.thin{display:block;margin-top:6px;font-size:13px;font-weight:700;color:#ff2a00}
-.ih{margin:16px 0 4px;font:900 14px var(--sans)}.ih small{font-weight:600}
-.few .ini button{border-style:dashed}
-.ini b{width:22px;font-weight:900}
-.ini button{font:600 14px var(--sans);background:#fff;border:1.5px solid var(--ink);border-radius:999px;padding:1px 9px;cursor:pointer;color:var(--ink)}
-.ini button:hover{background:#fff200}
+.thin{display:block;margin-top:6px;font-size:13px}
+.cite{margin:22px 0 0;padding:10px 0 0;border-top:2px solid var(--ink);font-size:12px;line-height:1.55}
+.cite h3{font:900 13px var(--sans);margin:0 0 4px}
+.cite ol{margin:0;padding-left:18px}
+.cite a{text-underline-offset:2px}
+.cite a:hover{background:#fff200}
+.cite p{margin:6px 0 0}
+nav.idx{border-right:2px solid var(--ink);overflow:auto;padding:0 0 24px}
+.idx .top{position:sticky;top:0;background:#fff;border-bottom:2px solid var(--ink);padding:10px 12px 8px;z-index:2}
+.idx .top b{font:900 15px var(--sans);display:block;margin-bottom:6px}
+.jump{display:flex;flex-wrap:wrap;gap:2px}
+.jump button{font:800 15px var(--sans);width:23px;height:26px;padding:0;border:0;background:none;cursor:pointer;color:var(--ink)}
+.jump button:hover{background:#fff200}
+.idx h4{font:900 22px var(--sans);margin:0;padding:12px 12px 2px;letter-spacing:-.03em}
+.idx ul{list-style:none;margin:0;padding:0 6px}
+.idx li button{display:block;width:100%;text-align:left;font:600 14.5px var(--sans);padding:3px 6px;border:0;background:none;cursor:pointer;color:var(--ink);letter-spacing:-.02em}
+.idx li button:hover{background:#fff200}
+.idx li button.on{background:#000;color:#fff}
 main{position:relative;min-height:0}
 #map{position:absolute;inset:0;background:#fff}
 .leaflet-container{font-family:var(--sans);background:#fff}
@@ -735,33 +733,26 @@ main{position:relative;min-height:0}
 .leaflet-control-attribution{background:#fff!important;font-size:10.5px}
 .bub{position:absolute;transform:translate(-50%,-50%);border-radius:50%;display:grid;place-items:center;text-align:center;font-weight:800;line-height:1.05;letter-spacing:-.04em;white-space:nowrap;cursor:pointer;transition:opacity .15s,transform .15s;border:2px solid transparent}
 .bub:hover{transform:translate(-50%,-50%) scale(1.08);z-index:5}
-.bub small{display:block;font-size:9px;font-weight:800;letter-spacing:0;margin-top:1px}
 .bub.g{background:#fff!important;border-style:dashed}
-.bub.part{border:2px dashed #000}
+.bub.o{background:#fff;color:#000;border-color:#000}
 .bub.dim{opacity:.18}
 .legend{position:absolute;left:12px;bottom:12px;z-index:800;background:#fff;border:2px solid var(--ink);padding:7px 10px;font-size:12px;font-weight:600;max-width:min(580px,calc(100% - 24px));display:flex;flex-wrap:wrap;gap:4px 12px}
-.legend .fam i{margin-right:1px}
-.legend .fam i:last-of-type{margin-right:5px}
-.form.fstart{border-top:2px solid #000}
-.legend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:4px;vertical-align:-1px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px;border:1.5px solid transparent}
+.legend .oth{background:#fff;border-color:#000}
 .legend .dash{border:1.5px dashed #000;background:#fff}
-.zoomhint{position:absolute;right:12px;bottom:12px;z-index:800;font-size:12px;font-weight:700;background:#000;color:#fff;padding:5px 9px;transition:opacity .4s}
+.legend .sep{flex-basis:100%;height:0}
+.zoomhint{position:absolute;right:12px;top:12px;z-index:800;font-size:12px;font-weight:700;background:#000;color:#fff;padding:5px 9px;transition:opacity .4s}
 .tip{font-size:13px;border-radius:0!important;border:2px solid #000!important;box-shadow:none!important}
 .tip b{font-size:15px}
-dialog{border:2px solid var(--ink);border-radius:0;padding:20px 22px;max-width:560px;width:calc(100% - 40px)}
-dialog::backdrop{background:rgba(0,0,0,.4)}
-dialog h2{font-weight:900;font-size:20px;margin:0 0 8px}
-dialog p{font-size:13.5px;margin:0 0 10px}
-dialog textarea{width:100%;min-height:130px;font:13px/1.5 ui-monospace,monospace;padding:10px;border:2px solid var(--ink);border-radius:0}
-dialog .row{display:flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap}
-dialog .go{background:var(--blue);color:#fff;border:0;padding:9px 14px;cursor:pointer;font:700 14px var(--sans)}
-.msg{font-size:13px}
-.msg.err{color:#ff2a00;font-weight:700}
+@media(max-width:1100px) and (min-width:821px){.app{grid-template-columns:150px minmax(300px,340px) 1fr}.idx li button{font-size:13.5px}}
 @media(max-width:820px){
   html,body{overflow:auto}
-  .app{height:auto;grid-template-columns:1fr;grid-template-rows:auto 55vh auto}
+  .app{height:auto;grid-template-columns:1fr;grid-template-rows:auto 55vh auto auto}
   header{flex-wrap:wrap}.count{display:none}
   main{grid-row:2}aside{grid-row:3;border-right:0;overflow:visible}
+  nav.idx{grid-row:4;border-right:0;border-top:2px solid var(--ink);overflow:visible}
+  .idx .top{position:static}
+  .idx ul{columns:3}
 }
 @media(prefers-reduced-motion:reduce){.bub{transition:none}}
 </style>
@@ -777,6 +768,7 @@ dialog .go{background:var(--blue);color:#fff;border:0;padding:9px 14px;cursor:po
     <button class="hbtn" id="rand">아무 단어나</button>
     <span class="count" id="count"></span>
   </header>
+  <nav class="idx" id="idx" aria-label="담긴 단어 전체"></nav>
   <aside>
     <section aria-live="polite">
       <h2 class="head" id="head"></h2>
@@ -786,7 +778,7 @@ dialog .go{background:var(--blue);color:#fff;border:0;padding:9px 14px;cursor:po
       <div class="forms" id="forms"></div>
     </section>
     
-    <details class="index" id="index"><summary>담긴 단어 전체 보기</summary><div id="ini"></div></details>
+    <div class="cite" id="cite"></div>
   </aside>
   <main>
     <div id="map" aria-label="방언 지도. 확대하면 시군구별로 보여요."></div>
@@ -795,12 +787,6 @@ dialog .go{background:var(--blue);color:#fff;border:0;padding:9px 14px;cursor:po
   </main>
 </div>
 
-<dialog id="addDlg">
-  <h2>데이터 더하기</h2>
-  <p>국립국어원 지역어 종합 정보 오픈 API 응답(JSON 전체)을 그대로 붙여 넣거나, <code>표준어,방언,지역[,시군구]</code> 형식의 CSV를 한 줄에 하나씩 넣어요. 지역은 경북, 충남처럼 줄여 쓰고, 시군구를 적으면 확대했을 때 그 시군구에만 칠해져요.</p>
-  <textarea id="paste" placeholder="부추,정구지,경북&#10;부추,졸,경기,평택"></textarea>
-  <div class="row"><button class="go" id="addData">지도에 더하기</button><button class="hbtn" id="closeAdd">닫기</button><span class="msg" id="msg" role="status"></span></div>
-</dialog>
 
 <script>/* @preserve
  * Leaflet 1.9.4, a JS library for interactive maps. https://leafletjs.com
@@ -3058,9 +3044,10 @@ const NOTES = {
 const $ = s => document.querySelector(s);
 const NAMES = { 서울: '서울', 부산: '부산', 대구: '대구', 인천: '인천', 광주: '광주', 대전: '대전', 울산: '울산', 세종: '세종', 경기: '경기도', 강원: '강원도', 충북: '충청북도', 충남: '충청남도', 전북: '전라북도', 전남: '전라남도', 경북: '경상북도', 경남: '경상남도', 제주: '제주도', 평양: '평양', 평남: '평안남도', 평북: '평안북도', 자강: '자강도', 양강: '양강도', 함남: '함경남도', 함북: '함경북도', 황남: '황해남도', 황북: '황해북도', 북강원: '강원도(북)', 라선: '라선' };
 const METRO = ['부산', '대구', '인천', '광주', '대전', '울산', '세종', '평양', '라선'];
-const PALETTE = ['#ff2a00', '#00c21a', '#ff00b4', '#ffd000', '#8a00ff', '#00b8ff', '#ff8a00', '#a8e600', '#ff0055', '#00dba0', '#c800ff', '#ffa3d9', '#00e5ff', '#d4ff00', '#ff5ec4', '#6bff6b', '#ff6a3d', '#b07cff'];
 const STD_COLOR = '#0033ff';
-const LIGHT = new Set(['#ffd000', '#a8e600', '#00b8ff', '#00dba0', '#ffa3d9', '#00e5ff', '#d4ff00', '#6bff6b', '#ff8a00']);
+// 비슷한 말 묶음마다 한 색, 최대 7색. 첫 색은 표준어 묶음. 8번째 묶음부터는 흰 원.
+const FAM_COLORS = ['#0033ff', '#ff2a00', '#00c21a', '#ff00b4', '#ffd000', '#8a00ff', '#ff8a00'];
+const OTHER = 'other';
 const jong = s => { const c = s.charCodeAt(s.length - 1) - 0xAC00; return c >= 0 && c <= 11171 && c % 28 !== 0; };
 const norm = s => s.replace(/\s+/g, '').trim();
 
@@ -3105,7 +3092,6 @@ const labelLayer = L.layerGroup().addTo(map);
 function bindLayer(l, prov, muni) {
   l.on('mouseover', e => { l.setStyle({ weight: 3, color: '#0033ff' }); });
   l.on('mouseout', () => paint(true));
-  l.on('click', () => showRegion(prov, muni));
   l.bindTooltip(() => tipHtml(prov, muni), { sticky: true, className: 'tip', direction: 'top', offset: [0, -6] });
 }
 let cur = null, hit = null, colors = {}, hoverForm = null;
@@ -3147,10 +3133,10 @@ function paint(keepLabels) {
 function bubbleHtml(r, form, size, fs, kind) {
   const c = colorOf(form); const isStd = form === cur.std;
   const focus = hoverForm || hit; const dim = focus && !r.forms.includes(focus) ? ' dim' : '';
+  if (c === OTHER) return `<div class="bub o${r.guess ? ' g' : ''}${dim}" style="width:${size}px;height:${size}px;font-size:${fs}px">${form}</div>`;
   const txt = r.guess ? c : (isLight(c) ? '#000' : '#fff');
-  const tag = r.guess ? '<small>추정</small>' : (isStd ? '<small>표준어</small>' : '');
   const style = `width:${size}px;height:${size}px;font-size:${fs}px;background:${c};color:${txt};${r.guess ? 'border-color:' + c : ''}`;
-  return `<div class="bub${r.guess ? ' g' : ''}${r.partial ? ' part' : ''}${dim}" style="${style}">${form}${tag}</div>`;
+  return `<div class="bub${r.guess ? ' g' : ''}${dim}" style="${style}">${form}</div>`;
 }
 const sizeFor = (t, base, per, min) => Math.max(min, base + per * [...t].length);
 // 도마다 원을 흩어 놓을 후보 지점: 남한은 시군구 중심, 북한은 도 안의 격자점
@@ -3188,7 +3174,7 @@ for (const f of PROV_GEO.features) {
 function labels() {
   labelLayer.clearLayers(); if (!cur) return;
   const z = map.getZoom(), b = map.getBounds().pad(.1);
-  const add = (ll, html, prov, muni) => { const m = L.marker(ll, { icon: L.divIcon({ className: '', html, iconSize: [0, 0] }), keyboard: false }); m.on('click', () => showRegion(prov, muni)); m.bindTooltip(() => tipHtml(prov, muni), { className: 'tip', direction: 'top', offset: [0, -16] }); labelLayer.addLayer(m); };
+  const add = (ll, html, prov, muni) => { const m = L.marker(ll, { icon: L.divIcon({ className: '', html, iconSize: [0, 0] }), keyboard: false }); m.bindTooltip(() => tipHtml(prov, muni), { className: 'tip', direction: 'top', offset: [0, -16] }); labelLayer.addLayer(m); };
   const fsBase = Math.max(10, Math.min(15, 10 + (z - 6) * 2));
   const cap = z < 6.75 ? 2 : z < 7.5 ? 3 : 5;
   const bub = (r, t, fs) => bubbleHtml(r, t, Math.round(Math.max(fs * [...t].length + 8, fs * 2.4 + 8)), Math.round(fs), '');
@@ -3234,20 +3220,6 @@ function families(std, forms) {
   for (const f of forms) { let best = null, bd = 1; for (const fm of fams) { const dm = Math.min(...fm.map(m => wdist(m, f))); if (dm <= .3 && wdist(fm[0], f) <= .45 && dm < bd) { bd = dm; best = fm; } } if (best) best.push(f); else fams.push([f]); }
   return fams;
 }
-const TONES = [
-  ['#0033ff', '#5c7cff', '#001a99', '#99adff', '#3355ff', '#000f66'],
-  ['#ff2a00', '#ff7a5c', '#b31d00', '#ffb3a3', '#ff5533', '#7a1400'],
-  ['#00c21a', '#5ce06b', '#007a10', '#a8f0b0', '#00e04a', '#004d0a'],
-  ['#ff00b4', '#ff66cf', '#a30074', '#ffb3e8', '#ff3399', '#66004a'],
-  ['#ffd000', '#ffe566', '#c9a400', '#fff2a8', '#ffb800', '#8a7000'],
-  ['#8a00ff', '#b366ff', '#5500a0', '#d9b3ff', '#a64dff', '#33005e'],
-  ['#00b8ff', '#66d6ff', '#0077a8', '#b3ebff', '#00d4ff', '#004a66'],
-  ['#ff8a00', '#ffb85c', '#b36000', '#ffd9a8', '#ff6a00', '#6b3a00'],
-  ['#a8e600', '#ccf266', '#6b9400', '#e6f9b3', '#c4ff00', '#3d5500'],
-  ['#00dba0', '#66ebc5', '#008a64', '#b3f5e2', '#00ffbb', '#004d38'],
-  ['#ff0055', '#ff6696', '#a30036', '#ffb3cb', '#ff3377', '#660022'],
-  ['#c800ff', '#de66ff', '#8000a3', '#efb3ff', '#d633ff', '#4d0066']
-];
 const isLight = hex => { const n = parseInt(hex.slice(1), 16), r = n >> 16, g = n >> 8 & 255, b = n & 255; return (r * 299 + g * 587 + b * 114) / 1000 > 150; };
 
 // ---------- 화면 글 ----------
@@ -3278,11 +3250,11 @@ function show(w, form) {
   const famCover = fm => fm.reduce((s, f) => s + cover(f), 0);
   const rest = fams.slice(1).sort((a, b) => famCover(b) - famCover(a)); w._fams = [fams[0], ...rest];
   colors = {}; w._famOf = {};
-  w._fams.forEach((fm, fi) => { const tones = TONES[fi % TONES.length]; const cyc = Math.floor(fi / TONES.length); fm.forEach((f, i) => { colors[f] = tones[(i + cyc * 2) % tones.length]; w._famOf[f] = fi; }); });
+  w._fams.forEach((fm, fi) => fm.forEach(f => { colors[f] = fi < FAM_COLORS.length ? FAM_COLORS[fi] : OTHER; w._famOf[f] = fi; }));
   order.length = 0; for (const fm of w._fams) for (const f of fm) if (f !== w.std) order.push(f);
   $('#head').textContent = hit || w.std;
   if (hit) $('#lede').innerHTML = `‘<b>${hit}</b>’${jong(hit) ? '은' : '는'} 표준어 ‘<b>${w.std}</b>’의 방언이에요. <b>${regionLabel(w, hit)}</b>에서 써요.`;
-  else $('#lede').innerHTML = `표준어 ‘<b>${w.std}</b>’${jong(w.std) ? '을' : '를'} 지역마다 이렇게 불러요. 지금 담긴 이름은 <b>${order.length + 1}가지</b>예요.${realN(w) < 3 ? ' <span class="thin">이 단어는 아직 한두 지역 자료만 있어서 지도가 많이 비어 있어요.</span>' : ''}`;
+  else $('#lede').innerHTML = `표준어 ‘<b>${w.std}</b>’${jong(w.std) ? '을' : '를'} 지역마다 이렇게 불러요. 지금 담긴 이름은 <b>${order.length + 1}가지</b>예요.${realN(w) < 3 ? ' <span class="thin">이 단어는 아직 한두 지역 자료만 있어요.</span>' : ''}`;
   const key = hit || w.std; const others = index().filter(e => norm(e.key) === norm(key) && e.w !== w);
   $('#also').innerHTML = others.length ? `‘${key}’${jong(key) ? '은' : '는'} ${others.map(o => `<button data-std="${o.w.std}" data-form="${o.kind === 'form' ? key : ''}">${o.kind === 'std' ? '표준어 ‘' + o.w.std + '’' : '‘' + o.w.std + '’의 방언'}</button>`).join(', ')}으로도 쓰여요.` : '';
   $('#also').querySelectorAll('button').forEach(b => b.onclick = () => show(W[b.dataset.std], b.dataset.form || null));
@@ -3290,29 +3262,25 @@ function show(w, form) {
   const forms = $('#forms'); forms.innerHTML = '';
   const row = (f, label, color) => {
     const b = document.createElement('button'); b.className = 'form' + (f === hit ? ' hit' : '');
-    b.innerHTML = `<span class="sw" style="background:${color}"></span><span class="w">${f}${f === w.std ? '<em>표준어</em>' : ''}</span><span class="r">${label}</span>`;
+    b.innerHTML = `<span class="sw" style="${color === OTHER ? 'border:1.5px solid #000' : 'background:' + color}"></span><span class="w">${f}${f === w.std ? '<em>표준어</em>' : ''}</span><span class="r">${label}</span>`;
     b.onmouseenter = () => { hoverForm = f; labels(); }; b.onmouseleave = () => { hoverForm = null; labels(); };
     b.onclick = e => { e.stopPropagation(); show(w, f === w.std || f === hit ? null : f); }; forms.appendChild(b);
   };
   row(w.std, regionLabel(w, w.std) || '서울', STD_COLOR);
-  let lastFam = 0; for (const f of order) { row(f, regionLabel(w, f), colors[f]); if (w._famOf[f] !== lastFam) { forms.lastChild.classList.add('fstart'); lastFam = w._famOf[f]; } }
-  legend();
+  for (const f of order) row(f, regionLabel(w, f), colors[f]);
+  legend(); cite(w); markIdx(w);
   paint();
   try { history.replaceState(null, '', '#' + encodeURIComponent(hit || w.std)); } catch (e) {}
 }
 function legend() {
-  const fams = cur._fams.slice(0, 8);
-  $('#legend').innerHTML = fams.map((fm, i) => `<span class="fam">${fm.slice(0, 5).map(f => `<i style="background:${colors[f]}"></i>`).join('')}${i === 0 ? cur.std + ' 계열 (표준어)' : fm[0] + ' 계열'}</span>`).join('') + `<span><i class="dash"></i>점선: 추정·일부 시군</span>`;
+  const fams = cur._fams.slice(0, FAM_COLORS.length);
+  const more = cur._fams.length > FAM_COLORS.length;
+  $('#legend').innerHTML = fams.map((fm, i) => `<span><i style="background:${FAM_COLORS[i]}"></i>${fm[0]}${fm.length > 1 ? ' 계열' : ''}</span>`).join('') +
+    '<span class="sep"></span>' + (more ? '<span><i class="oth"></i>그 밖의 말</span>' : '') + '<span><i class="dash"></i>점선: 자료가 없어 이웃 지역으로 추정</span>';
 }
-function showRegion(prov, muni) { return;
-  const box = $('#region'); box.classList.add('on');
-  $('#rName').textContent = muni ? `${NAMES[prov]} ${muni}에서 쓰는 말` : `${NAMES[prov]}에서 쓰는 말`;
-  const rows = [];
-  for (const w of list()) { const r = formsAt(w, prov, muni); if (!r || r.guess || (w.prov[prov] && w.prov[prov].implied)) continue; rows.push({ w, f: r.forms }); }
-  rows.sort((a, b) => a.w.std.localeCompare(b.w.std, 'ko'));
-  $('#rList').innerHTML = rows.length ? rows.map(({ w, f }) => `<li><button data-std="${w.std}" data-f="${f[0]}"><b>${f.join(', ')}</b><span>${f[0] === w.std ? '' : '= ' + w.std}</span></button></li>`).join('') : '<li><span>아직 담긴 자료가 없어요.</span></li>';
-  $('#rList').querySelectorAll('button').forEach(b => b.onclick = () => { const w = W[b.dataset.std]; $('#q').value = b.dataset.f; show(w, b.dataset.f === w.std ? null : b.dataset.f); $('aside').scrollTo({ top: 0, behavior: 'smooth' }); });
-  box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+function cite(w) {
+  const src = w.src.filter(k => SOURCES[k]);
+  $('#cite').innerHTML = `<h3>출처</h3><ol>${src.map(k => `<li><a href="${SOURCES[k][1]}" target="_blank" rel="noopener">${SOURCES[k][0]}</a></li>`).join('')}</ol><p>지도 경계: 통계청 행정구역 경계(southkorea-maps), Natural Earth</p>`;
 }
 
 
@@ -3338,7 +3306,7 @@ q.addEventListener('input', () => {
 q.addEventListener('keydown', e => {
   if (e.key === 'ArrowDown') { act = Math.min(items.length - 1, act + 1); mark(); e.preventDefault(); }
   else if (e.key === 'ArrowUp') { act = Math.max(0, act - 1); mark(); e.preventDefault(); }
-  else if (e.key === 'Enter') { const r = items[act >= 0 ? act : 0] || lookup(q.value)[0]; if (r) pick(r); else { sugg.classList.remove('on'); $('#lede').textContent = `‘${q.value}’${jong(q.value) ? '은' : '는'} 아직 담긴 자료에 없어요. 다른 말로 찾아보거나 데이터를 더해 보세요.`; } }
+  else if (e.key === 'Enter') { const r = items[act >= 0 ? act : 0] || lookup(q.value)[0]; if (r) pick(r); else { sugg.classList.remove('on'); $('#lede').textContent = `‘${q.value}’${jong(q.value) ? '은' : '는'} 아직 담긴 자료에 없어요. 다른 말로 찾아보세요.`; } }
   else if (e.key === 'Escape') sugg.classList.remove('on');
 });
 q.addEventListener('blur', () => setTimeout(() => sugg.classList.remove('on'), 120));
@@ -3349,39 +3317,24 @@ $('#rand').onclick = () => { const ws = list().filter(w => realN(w) >= 6); const
 const CHO = 'ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ';
 const cho = s => { const c = s.charCodeAt(0) - 0xAC00; return c >= 0 && c <= 11171 ? CHO[Math.floor(c / 588)].replace('ㄲ', 'ㄱ').replace('ㄸ', 'ㄷ').replace('ㅃ', 'ㅂ').replace('ㅆ', 'ㅅ').replace('ㅉ', 'ㅈ') : '#'; };
 function renderIndex() {
-  const grp = ws => { const g = {}; for (const w of ws.sort((a, b) => a.std.localeCompare(b.std, 'ko'))) (g[cho(w.std)] = g[cho(w.std)] || []).push(w); return Object.entries(g).map(([c, ws]) => `<div class="ini"><b>${c}</b>${ws.map(w => `<button>${w.std}</button>`).join('')}</div>`).join(''); };
-  const full = list().filter(w => realN(w) >= 6), mid = list().filter(w => realN(w) >= 3 && realN(w) < 6), few = list().filter(w => realN(w) < 3);
-  $('#ini').innerHTML = `<h4 class="ih">전국이 칠해지는 단어 <small>${full.length}개</small></h4>${grp(full)}<h4 class="ih">몇몇 지역만 있는 단어 <small>${mid.length}개</small></h4>${grp(mid)}<h4 class="ih">한두 지역 자료뿐인 단어 <small>${few.length}개</small></h4><div class="few">${grp(few)}</div>`;
-  $('#ini').querySelectorAll('button').forEach(b => b.onclick = () => { q.value = b.textContent; show(W[b.textContent], null); $('aside').scrollTo({ top: 0, behavior: 'smooth' }); });
+  const g = {}; for (const w of list().sort((a, b) => a.std.localeCompare(b.std, 'ko'))) (g[cho(w.std)] = g[cho(w.std)] || []).push(w);
+  const keys = Object.keys(g);
+  $('#idx').innerHTML = `<div class="top"><b>담긴 단어 ${list().length}개</b><div class="jump">${keys.map(c => `<button data-j="${c}" aria-label="${c} 항목으로">${c}</button>`).join('')}</div></div>` +
+    keys.map(c => `<h4 id="ix-${c}">${c}</h4><ul>${g[c].map(w => `<li><button data-w="${w.std}">${w.std}</button></li>`).join('')}</ul>`).join('');
+  $('#idx').querySelectorAll('[data-w]').forEach(b => b.onclick = e => { e.stopPropagation(); q.value = b.dataset.w; show(W[b.dataset.w], null); $('aside').scrollTo({ top: 0 }); });
+  $('#idx').querySelectorAll('[data-j]').forEach(b => b.onclick = e => { e.stopPropagation(); const h = $('#ix-' + b.dataset.j); const idx = $('#idx'); if (getComputedStyle(idx).overflowY === 'auto') idx.scrollTo({ top: h.offsetTop - $('#idx .top').offsetHeight, behavior: 'smooth' }); else h.scrollIntoView({ behavior: 'smooth' }); });
   const nForms = index().filter(e => e.kind === 'form').length;
-  $('#count').textContent = `표준어 ${list().length}개 · 방언 ${nForms}개`;
+  $('#count').textContent = `표준어 ${list().length}개, 방언 ${nForms}개`;
+}
+function markIdx(w) {
+  const idx = $('#idx'); if (!idx) return;
+  idx.querySelectorAll('button.on').forEach(b => b.classList.remove('on'));
+  const b = idx.querySelector(`[data-w="${w.std}"]`); if (!b) return; b.classList.add('on');
+  if (getComputedStyle(idx).overflowY !== 'auto') return;
+  const r = b.getBoundingClientRect(), R = idx.getBoundingClientRect();
+  if (r.top < R.top + 90 || r.bottom > R.bottom) idx.scrollTo({ top: b.offsetTop - R.height / 2 });
 }
 
-// ---------- 데이터 더하기 ----------
-const SIDO = { '41': '경기', '42': '강원', '43': '충북', '44': '충남', '45': '전북', '46': '전남', '47': '경북', '48': '경남', '50': '제주', '51': '광주', '52': '대전', '53': '울산', '54': '인천', '11': '서울', '26': '부산', '27': '대구', '36': '세종' };
-const dlg = $('#addDlg');
-if ($('#openAdd')) $('#openAdd').onclick = () => { try { dlg.showModal(); } catch (e) { dlg.setAttribute('open', ''); } };
-$('#closeAdd').onclick = () => dlg.close ? dlg.close() : dlg.removeAttribute('open');
-$('#addData').onclick = () => {
-  const txt = $('#paste').value.trim(), msg = $('#msg'); msg.className = 'msg';
-  if (!txt) { msg.textContent = '붙여 넣은 내용이 없어요.'; msg.classList.add('err'); return; }
-  let rows = [];
-  try {
-    if (txt[0] === '{' || txt[0] === '[') { const j = JSON.parse(txt); const arr = Array.isArray(j) ? j : (j.resultList || []); rows = arr.map(r => [r.stdTp, r.dltTp, SIDO[String(r.sidoCd)], r.sigunguNm]); }
-    else rows = txt.split(/\n+/).map(l => l.split(/[,\t]/).map(s => s.trim()));
-  } catch (e) { msg.textContent = 'JSON 형식이 맞지 않아요. 응답 전체를 그대로 붙여 넣어 주세요.'; msg.classList.add('err'); return; }
-  let n = 0, bad = 0, last = null;
-  for (const [std, form, reg, sg] of rows) {
-    const id = Object.keys(NAMES).find(k => k === reg || NAMES[k] === reg);
-    if (!std || !form || !id) { bad++; continue; }
-    addEntry(std, [form], id, ['직접 추가'], sg ? [sg.replace(/(시|군|구)$/, '')] : null);
-    if (!W[std].prov['서울']) W[std].prov['서울'] = { forms: [std], partial: false, implied: true };
-    W[std].note = W[std].note || ''; n++; last = std;
-  }
-  renderIndex();
-  msg.textContent = `${n}개를 더했어요.` + (bad ? ` ${bad}줄은 지역 이름을 알아보지 못해 건너뛰었어요.` : '');
-  if (last) show(W[last], null);
-};
 
 renderIndex();
 const start = decodeURIComponent(location.hash.slice(1));
