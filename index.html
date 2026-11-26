@@ -672,6 +672,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
   --sans:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR","Nanum Gothic",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
+/* 지도 지역을 누를 때 브라우저가 그리는 포커스 사각형 없애기 */
+.leaflet-container path.leaflet-interactive:focus,.leaflet-container .leaflet-interactive:focus,.leaflet-container:focus{outline:none}
 /* 스크롤바: 얇은 검은 막대, 트랙 없음 */
 @supports (-moz-appearance:none){*{scrollbar-width:thin;scrollbar-color:#000 transparent}}
 ::-webkit-scrollbar{width:6px;height:6px}
