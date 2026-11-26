@@ -686,7 +686,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
 a{color:inherit}
 button{font-family:var(--sans)}
 button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
-.app{height:100vh;display:grid;grid-template-columns:210px minmax(360px,420px) 1fr;grid-template-rows:auto minmax(0,1fr)}
+.app{height:100vh;display:grid;grid-template-columns:minmax(360px,420px) 180px 1fr;grid-template-rows:auto minmax(0,1fr)}
+.app>aside{grid-column:1;grid-row:2}.app>nav.idx{grid-column:2;grid-row:2}.app>main{grid-column:3;grid-row:2}
 header{grid-column:1/-1;display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:2px solid var(--ink);background:var(--bg)}
 header h1{font-weight:900;font-size:21px;margin:0;white-space:nowrap;letter-spacing:-.04em}
 .search{position:relative;flex:1;max-width:520px}
@@ -701,7 +702,7 @@ header h1{font-weight:900;font-size:21px;margin:0;white-space:nowrap;letter-spac
 .hbtn{font:700 14px var(--sans);background:#fff;border:2px solid var(--ink);border-radius:0;padding:7px 12px;cursor:pointer;color:var(--ink);white-space:nowrap}
 .hbtn:hover{background:#fff200}
 .count{margin-left:auto;font-size:13px;font-weight:600;white-space:nowrap}
-aside{overflow:auto;padding:30px 30px 48px;border-right:2px solid var(--ink)}
+aside{overflow:auto;padding:30px 30px 48px}
 .head{font-weight:900;font-size:clamp(46px,5.4vw,78px);line-height:1;margin:0;letter-spacing:-.05em;word-break:keep-all}
 .headrow{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin:0 0 18px}
 .ncount{font-size:14px;font-weight:700;white-space:nowrap;padding-bottom:6px}
@@ -726,7 +727,7 @@ aside{overflow:auto;padding:30px 30px 48px;border-right:2px solid var(--ink)}
 .cite a{text-underline-offset:2px}
 .cite a:hover{background:#fff200}
 .cite p{margin:6px 0 0}
-nav.idx{border-right:2px solid var(--ink);overflow:auto;padding:0 0 24px}
+nav.idx{border-left:1px solid var(--ink);border-right:2px solid var(--ink);overflow:auto;padding:0 0 24px}
 .idx .top{position:sticky;top:0;background:#fff;border-bottom:2px solid var(--ink);padding:10px 12px 8px;z-index:2}
 .idx .top b{font:900 15px var(--sans);display:block;margin-bottom:6px}
 .jump{display:flex;flex-wrap:wrap;gap:2px}
@@ -758,13 +759,14 @@ main{position:relative;min-height:0}
 .zoomhint{position:absolute;right:12px;top:12px;z-index:800;font-size:12px;font-weight:700;background:#000;color:#fff;padding:5px 9px;transition:opacity .4s}
 .tip{font-size:13px;border-radius:0!important;border:2px solid #000!important;box-shadow:none!important}
 .tip b{font-size:15px}
-@media(max-width:1100px) and (min-width:821px){.app{grid-template-columns:150px minmax(300px,340px) 1fr}.idx li button{font-size:13.5px}}
+@media(max-width:1100px) and (min-width:821px){.app{grid-template-columns:minmax(300px,340px) 150px 1fr}.idx li button{font-size:13.5px}}
 @media(max-width:820px){
   html,body{overflow:auto}
   .app{height:auto;grid-template-columns:1fr;grid-template-rows:auto 55vh auto auto}
   header{flex-wrap:wrap}.count{display:none}
-  main{grid-row:2}aside{grid-row:3;border-right:0;overflow:visible}
-  nav.idx{grid-row:4;border-right:0;border-top:2px solid var(--ink);overflow:visible}
+  .app>main{grid-column:1;grid-row:2}.app>aside{grid-column:1;grid-row:3;border-right:0;overflow:visible}
+  .app>nav.idx{grid-column:1;grid-row:4}
+  nav.idx{border-left:0;border-right:0;border-top:2px solid var(--ink);overflow:visible}
   .idx .top{position:static}
   .idx ul{columns:3}
 }
@@ -3195,6 +3197,7 @@ function labels() {
       const id = f.properties.id; if (METRO.includes(id) && z < 7.5) continue;
       const r = formsAt(cur, id, null); if (!r) continue;
       if (METRO.includes(id) && r.guess) continue;
+      const pick = hit || hoverForm; if (pick && r.forms.includes(pick)) r.forms = [pick, ...r.forms.filter(x => x !== pick)];
       const spots = SPOTS[id]; const n = METRO.includes(id) ? 1 : Math.min(r.forms.length, cap, spots.length);
       for (let i = 0; i < n; i++) {
         const t = r.forms[i]; const fs = i === 0 ? fsBase + 2 : fsBase - 1;
@@ -3204,12 +3207,14 @@ function labels() {
   } else {
     for (const f of PROV_GEO.features) {
       if (!f.properties.nk) continue; const id = f.properties.id; const r = formsAt(cur, id, null); if (!r) continue;
+      const pk = hit || hoverForm; if (pk && r.forms.includes(pk)) r.forms = [pk, ...r.forms.filter(x => x !== pk)];
       SPOTS[id].slice(0, Math.min(r.forms.length, 6)).forEach((s, i) => { if (b.contains(s)) add(s, bub({ ...r, forms: [r.forms[i]] }, r.forms[i], 14), id, null); });
     }
     for (const f of MUNI_GEO.features) {
       const p = f.properties; if (!b.contains(p.c)) continue; const r = formsAt(cur, p.prov, p.name); if (!r) continue;
       const k = MUNI_GEO.features.filter(m => m.properties.prov === p.prov).indexOf(f);
-      const t = r.exact ? r.forms[0] : r.forms[k % r.forms.length];
+      const pick = hit || hoverForm;
+      const t = pick && r.forms.includes(pick) ? pick : r.exact ? r.forms[0] : r.forms[k % r.forms.length];
       add(p.c, bub({ ...r, forms: [t] }, t, z >= 10.5 ? 14 : 12), p.prov, p.name);
     }
   }
@@ -3284,8 +3289,27 @@ function show(w, form) {
   row(w.std, regionLabel(w, w.std) || '서울', STD_COLOR);
   for (const f of order) row(f, regionLabel(w, f), colors[f]);
   legend(); cite(w); markIdx(w);
-  paint();
+  paint(); focusForm(w, hit);
   try { history.replaceState(null, '', '#' + encodeURIComponent(hit || w.std)); } catch (e) {}
+}
+// 방언을 고르면 그 말이 쓰이는 곳으로 지도를 옮겨 가운데에 보여 준다. 해제하면 전국으로 돌아간다.
+const HOME = L.latLngBounds([[33.1, 124.4], [43.0, 130.9]]);
+let focused = false;
+function focusForm(w, f) {
+  if (!f) { if (focused) { focused = false; map.flyToBounds(HOME, { duration: .7 }); } return; }
+  const b = L.latLngBounds([]); let muniOnly = true;
+  const munis = new Set(Object.keys(w.sub).filter(k => w.sub[k].includes(f)));
+  muniLayer.eachLayer(l => { const p = l.feature.properties; if (munis.has(p.prov + '|' + p.name)) b.extend(l.getBounds()); });
+  const withMuni = new Set([...munis].map(k => k.split('|')[0]));
+  for (const lay of [provLayer, nkLayer]) lay.eachLayer(l => {
+    const id = l.feature.properties.id, p = w.prov[id];
+    if (p && p.forms.includes(f) && !(withMuni.has(id) && p.partial)) { b.extend(l.getBounds()); muniOnly = false; }
+  });
+  if (!b.isValid()) return;
+  focused = true;
+  const opt = { paddingTopLeft: [70, 70], paddingBottomRight: [70, 140], maxZoom: muniOnly ? DETAIL : 8, duration: .8 };
+  if (map.getBoundsZoom(b, false, L.point(140, 210)) <= map.getBoundsZoom(HOME)) map.flyToBounds(HOME, { duration: .7 });
+  else map.flyToBounds(b, opt);
 }
 function legend() {
   const fams = cur._fams.slice(0, FAM_COLORS.length);
